@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="utf-8" />
+	<title>YouCode | Scrum Board</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="assets/css/default/app.min.css" rel="stylesheet" />
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- ================== END core-css ================== -->
+</head>
+<body>
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app-without-sidebar">
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content main-style">
+			<div class="d-flex justify-content-between">
+				<div class=" ">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+						<li class="breadcrumb-item active">Scrum Board </li>
+					</ol>
+					<!-- BEGIN page-header -->
+					<h1 class="page-header">
+						Scrum Board 
+					</h1>
+					<!-- END page-header -->
+				</div>
+				
+				<div class="">
+					<button id="btnadd" class="btn btn-dark  rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-task" onclick="clearmodal()"><i class="bi bi-plus-lg"></i>&emsp; Add Task</button>
+				</div>
+			</div>
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-xxl-4 col-md-6 my-3 col-sm-12 ">
+						<div class="">
+						<div class=" td col-xxl-12 col-md-12 col-sm-12 text-white p-3 rounded-top ">
+							<h4 class="" >To do (<span id="to-do-tasks-count"></span>)</h4>
+
+						</div>
+						<div class="" id="to-do-tasks">
+							
+							
+							<!-- <button class="col-xxl-12 col-md-12 col-sm-12 btn-light text-black border-bottom  border-end-0 text-start w-100">
+								<div class="row">
+								<div class="col-1 my-3">
+									<i class="bi bi-exclamation-circle text-red h2"></i> 
+								</div>
+								<div class="col-11">
+								<div class="m-2">
+									<div class="fw-bold fs-3">Provide examples, credentials, etc</div>
+									<div class="">
+										<div class="text-black-50">#3 created in 2022-10-08</div>
+										<div class="" title="If the expectation is to process or generate some file — attach an example of such a file. If the goal is to integrate what is being developed with some service, ensure your devs have access to this service and its documentation. This list could go on and on — the bottom line is — if there is something that our developer might make use of, try to foresee it and provide them with (access to) it.">If the expectation is to process or generate some file ...</div>
+									</div>
+									<div class="my-2">
+										<span class="btn btn-primary">High</span>
+										<span class="btn btn-secondary">Feature</span>
+									</div>
+								</div>
+							</div>
+							</div>
+							</button>
+							<button class="col-xxl-12 col-md-12 col-sm-12 btn-light text-black border-bottom  border-end-0 text-start w-100">
+								<div class="row">
+								<div class="col-1 my-3">
+									<i class="bi bi-exclamation-circle text-red h2"></i> 
+								</div>
+								<div class="col-11">
+								<div class="m-2">
+									<div class="fw-bold fs-3">Annotate</div>
+									<div class="">
+										<div class="text-black-50">#4 created in 2022-10-08</div>
+										<div class="" title="The mockup provided can sometimes be confusing for developers. Especially if it contains much more content than the scope of the task described. Drop a couple of arrows, outlines and annotations here and there to emphasize what are the important parts of the mockup from the task requirements perspective.">The mockup provided can sometimes be confusing for deve...</div>
+									</div>
+									<div class="my-2">
+										<span class="btn btn-primary">High</span>
+										<span class="btn btn-secondary">Feature</span>
+									</div>
+								</div>
+							</div>
+							</div>
+							</button>
+							<button class="col-xxl-12 col-md-12 col-sm-12  btn-light text-black border-bottom  border-end-0 text-start rounded-bottom w-100">
+								<div class="row">
+								<div class="col-1 my-3">
+									<i class="bi bi-exclamation-circle text-red h2"></i> 
+								</div>
+								<div class="col-11">
+								<div class="m-2">
+									<div class="fw-bold fs-3">Use charts and diagrams</div>
+									<div class="">
+										<div class="text-black-50">#5 created in 2022-10-08</div>
+										<div class="" title="While it is not always necessary, sometimes it might be beneficial to prepare a flowchart, a block diagram or some other kind of concept visualization that will render it easy for the developer to comprehend the task and its scope.">While it is not always necessary, sometimes it might be...</div>
+									</div>
+									<div class="my-2">
+										<span class="btn btn-primary">High</span>
+										<span class="btn btn-secondary">Feature</span>
+									</div>
+								</div>
+							</div>
+							</div>
+							</button> --> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-4 col-md-6 my-3 col-sm-12">
+					<div class="">
+						<div class=" td col-12 text-white p-3 rounded-top">
+							<h4 class="">In Progress (<span id="in-progress-tasks-count"></span>)</h4>
+
+						</div>
+						<div class="" id="in-progress-tasks">
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-4 col-md-6 my-3 col-sm-12">
+					<div class="">
+						<div class=" td col-xxl-12 col-md-12 col-sm-12 text-white p-3 rounded-top">
+							<h4 class="">Done (<span id="done-tasks-count">4</span>)</h4>
+
+						</div>
+						
+						<div class="" id="done-tasks">
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- END #content -->
+		<!-- BEGIN scroll-top-btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+		<!-- END scroll-top-btn -->
+	</div>
+	<!-- END #app -->
+	
+	<!-- TASK MODAL -->
+	<!-- <div class="modal fade" id="modal-task"> -->
+		<!-- Modal content goes here -->
+		<div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+		
+					<div class="h1">Add Task</div>
+					
+				  </div>
+				  <div class="modal-body">
+					<!--begin form-->
+					<form action="" name="form_add" id="formadd" class="was-validated" method="post">
+						<div class="form-group">
+							<label for="title" class="h3" >Title</label>
+							<input type="text" class="form-control" name="title" id="title" placeholder="title" required >
+							<div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+							
+						</div>
+						<label  class="h3 mt-2">Type</label> <br>
+						<div class="form-check">
+							<input type="radio" name="type" id="feature"  value="Feature" class="h4" required>
+							<label class="form-check-label h6" for="feature" >Feature&emsp;</label> <br>
+							<input type="radio" name="type" id="bug" value="Bug" class="h4" required >
+							<label class="form-check-label h6" for="bug">Bug</label>
+							<div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Check this to continue.</div>
+						</div>
+						<div class="form-group">
+							<label for="priority" class="h3" >Priority</label>
+							<select name="priority"  class="form-select form-select-lg mb-3" id="priority" required >
+								<option selected disabled hidden></option>
+								<option>Low</option>
+								<option>High</option>
+								<option>Meduim </option>
+								<div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Choose the priority of the task to continue.</div>
+								
+							</select>
+					
+							<label for="status" class="h3" >Status</label>
+							<select name="status"  class="form-select form-select-lg mb-3" id="status" required >
+								<option selected disabled hidden></option>
+								<option>To Do</option>
+								<option>In Progress</option>
+								<option>Done </option>
+							</select>
+							<label for="date" class="h3" >Date</label>
+							<input type="date" class="form-control" name="date" id="date"  required>
+							<label for="description" class="h3" >Description</label> <br>
+							<textarea rows="5" class="form-control" name="description" id="description"  required></textarea>
+						</div>
+					</form>
+					<!--end form-->
+                    
+
+				  </div>
+				  <div class="modal-footer">
+					<button id="btnclos" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button id="btnsave" type="submit" class=" cl btn btn-dark" onclick="saveTask()">Save changes</button>
+				  </div>
+				</div>
+			  </div>
+		</div>
+		<!-- modal 2 -->
+		<div class="modal fade" id="modal-task-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+		
+					<div class="h1">Update Task</div>
+					
+				  </div>
+				  <div class="modal-body">
+					<!--begin form-->
+					<form action="" name="form_update" class="form" method="post">
+						<div class="form-group">
+							<label for="title" class="h3" >Title</label>
+							<input type="text" class="form-control" name="title" id="title" placeholder="title">
+						</div>
+						<label  class="h3 mt-2">Type</label> <br>
+						<div class="form-check">
+							<input type="radio" name="type" id="feature" value="Feature" class="h4">
+							<label class="form-check-label h6" for="feature">Feature&emsp;</label> <br>
+							<input type="radio" name="type" id="bug" value="Bug"   class="h4" >
+							<label class="form-check-label h6" for="bug">Bug</label>
+						</div>
+						<div class="form-group">
+							<label for="priority" class="h3" >Priority</label>
+							<select name="priority"  class="form-select form-select-lg mb-3" id="priority" >
+								<option selected>Open this select menu</option>
+								<option>Low</option>
+								<option>High</option>
+								<option>Meduim </option>
+							</select>
+					
+							<label for="status" class="h3" >Status</label>
+							<select name="status"  class="form-select form-select-lg mb-3" id="status">
+								<option selected>Open this select menu</option>
+								<option>To Do</option>
+								<option>In Progress</option>
+								<option>Done </option>
+								
+							</select>
+							<label for="date" class="h3" >Date</label>
+							<input type="date" class="form-control" name="date" id="date">
+							<label for="description" class="h3" >Description</label> <br>
+							<textarea rows="5" class="form-control" name="description" id="description"></textarea>
+						</div>
+					</form>
+					<!--end form-->
+                    
+
+				  </div>
+				  <div class="modal-footer">
+					<button id="btnclos" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button id="btnup" type="submit" class=" cl btn btn-dark">Update changes</button>
+					<button id="btndel" type="submit" class="  btn btn-danger">Delete Task</button>
+				  </div>
+				</div>
+			  </div>
+		</div>
+		<!--end modal 2 -->
+
+<!-- <script>
+	// function saved(){
+//  $('#modal-task').modal('hide');
+// // document.querySelector('#modal-task');
+// 		Swal.fire(
+//   'Task Added!',
+//   'sucessfully!',
+//   'success'
+// )
+// 	}
+
+
+</scrip> -->
+		
+	<!-- </div> -->
+	
+	<!-- ================== BEGIN core-js ================== -->
+	<script src="assets/js/vendor.min.js"></script>
+	<script src="assets/js/app.min.js"></script>
+	<!-- ================== END core-js ================== -->
+	<script src="assets/js/data.js"></script>
+	<script src="assets/js/app.js"></script>
+
+
+
+</body>
+</html>
